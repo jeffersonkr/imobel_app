@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Imobiliária SK</string>
     <string name="login">Imobiliária SK - Login</string>
+    <string name="action_buscar">Buscando</string>
+    <string name="action_config">Configurar</string>
+    <string name="action_atualizar">Atualizar</string>
 </resources>
