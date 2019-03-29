@@ -4,4 +4,7 @@
     <string name="action_buscar">Buscando</string>
     <string name="action_config">Configurar</string>
     <string name="action_atualizar">Atualizar</string>
+    <string name="action_addImoveis">Cadastrar Imovel</string>
+    <string name="action_delImoveis">Remover Imovel</string>
+    <string name="action_viewImoveis">Visualizar Imovel</string>
 </resources>
