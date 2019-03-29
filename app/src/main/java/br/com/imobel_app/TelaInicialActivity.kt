@@ -9,6 +9,7 @@ import android.view.MenuItem
 import android.widget.Button
 import android.support.v7.widget.SearchView
 import android.support.v7.widget.Toolbar
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 
@@ -36,6 +37,9 @@ class TelaInicialActivity : DebugActivity() {
 
         val botaoSair = findViewById<Button>(R.id.botaoSair)
         botaoSair.setOnClickListener {cliqueSair()}
+
+        val primeira_foto = findViewById<ImageView>(R.id.imageView1)
+        primeira_foto.setImageResource(R.drawable.casa)
     }
 
     fun cliqueSair() {
