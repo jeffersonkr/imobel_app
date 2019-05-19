@@ -1,10 +1,9 @@
 <resources>
     <string name="app_name">Imobiliária SK</string>
-    <string name="login">Imobiliária SK - Login</string>
-    <string name="action_buscar">Buscando</string>
-    <string name="action_config">Configurar</string>
+    <string name="action_buscar">Buscar</string>
     <string name="action_atualizar">Atualizar</string>
-    <string name="action_addImoveis">Cadastrar Imovel</string>
-    <string name="action_delImoveis">Remover Imovel</string>
-    <string name="action_viewImoveis">Visualizar Imovel</string>
+    <string name="action_adicionar">Adicionar</string>
+    <string name="action_config">Configurações</string>
+    <string name="navigation_drawer_open">Menu aberto</string>
+    <string name="navigation_drawer_close">Menu fechado</string>
 </resources>

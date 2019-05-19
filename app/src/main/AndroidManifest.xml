@@ -15,12 +15,10 @@
                     <category android:name="android.intent.category.LAUNCHER"/>
                 </intent-filter>
             </activity>
+        <activity android:name=".DebugActivity" />
         <activity android:name=".TelaInicialActivity"
-                  android:label="@string/login">
-        </activity>
-        <activity android:name=".DebugActivity"
-                  android:label="@string/login">
-        </activity>
+                  android:theme="@style/AppTheme.Toolbar"></activity>
+
     </application>
 
 </manifest>

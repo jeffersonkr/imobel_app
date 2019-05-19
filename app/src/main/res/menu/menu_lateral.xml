@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_imoveis"
+            android:icon="@drawable/casa"
+            android:title="Imoveis"
+            android:checked="true"/>
+        <item
+            android:id="@+id/nav_corretor"
+            android:icon="@drawable/proprietario"
+            android:title="Corretor"/>
+
+        <item
+            android:id="@+id/nav_proprietario"
+            android:icon="@drawable/proprietario"
+            android:title="Proprietario"/>
+
+        <item
+            android:id="@+id/nav_cliente"
+            android:icon="@drawable/proprietario"
+            android:title="Cliente"/>
+        <item
+            android:id="@+id/nav_sair"
+            android:icon="@drawable/sair"
+            android:title="Sair"/>
+    </group>
+</menu>

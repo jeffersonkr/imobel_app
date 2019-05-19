@@ -4,16 +4,24 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.support.design.widget.NavigationView
+import android.support.v4.view.GravityCompat
+import android.support.v7.app.ActionBarDrawerToggle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
 import android.support.v7.widget.SearchView
 import android.support.v7.widget.Toolbar
+import android.view.Gravity
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import kotlinx.android.synthetic.main.pagina_main.*
+import kotlinx.android.synthetic.main.toolbar.*
 
-class TelaInicialActivity : DebugActivity() {
+
+class TelaInicialActivity : DebugActivity(),
+    NavigationView.OnNavigationItemSelectedListener{
 
     private val context: Context get() = this
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,11 +43,12 @@ class TelaInicialActivity : DebugActivity() {
         val mensagem = findViewById<TextView>(R.id.mensagemInicial)
         mensagem.text = "Bem vindo $nome"
 
-        val botaoSair = findViewById<Button>(R.id.botaoSair)
-        botaoSair.setOnClickListener {cliqueSair()}
+
 
         val primeira_foto = findViewById<ImageView>(R.id.imageView1)
         primeira_foto.setImageResource(R.drawable.casa)
+
+        configuraMenuLateral()
     }
 
     fun cliqueSair() {
@@ -89,4 +98,42 @@ class TelaInicialActivity : DebugActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    private fun configuraMenuLateral(){
+        var toggle = ActionBarDrawerToggle(
+            this,
+            layoutMenuLateral,
+            toolbar,
+            R.string.navigation_drawer_open,
+            R.string.navigation_drawer_close
+        )
+        layoutMenuLateral.addDrawerListener(toggle)
+        toggle.syncState()
+        menu_lateral.setNavigationItemSelectedListener(this)
+    }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.nav_cliente -> {
+                Toast.makeText(this, "Clicou cliente", Toast.LENGTH_LONG).show()
+            }
+
+            R.id.nav_proprietario -> {
+                Toast.makeText(this, "Clicou proprietario", Toast.LENGTH_LONG).show()
+            }
+
+            R.id.nav_imoveis -> {
+                Toast.makeText(this, "Clicou imoveis", Toast.LENGTH_LONG).show()
+            }
+
+            R.id.nav_corretor -> {
+                Toast.makeText(this, "Clicou corretor", Toast.LENGTH_LONG).show()
+            }
+
+            R.id.nav_sair -> {
+                cliqueSair()
+            }
+        }
+        layoutMenuLateral.closeDrawer(GravityCompat.START)
+        return true
+    }
 }
