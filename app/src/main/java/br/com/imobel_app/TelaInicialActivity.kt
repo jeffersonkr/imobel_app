@@ -7,11 +7,10 @@ import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
+import android.support.v7.widget.*
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
-import android.support.v7.widget.SearchView
-import android.support.v7.widget.Toolbar
 import android.view.Gravity
 import android.widget.ImageView
 import android.widget.TextView
@@ -24,6 +23,10 @@ class TelaInicialActivity : DebugActivity(),
     NavigationView.OnNavigationItemSelectedListener{
 
     private val context: Context get() = this
+    private var imoveis = listOf<Imovel>()
+    var recycler: RecyclerView? = null
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.pagina_main)
@@ -40,15 +43,32 @@ class TelaInicialActivity : DebugActivity(),
         Toast.makeText(context, "Parâmetro: $nome", Toast.LENGTH_LONG).show()
         Toast.makeText(context, "Numero: $numero", Toast.LENGTH_LONG).show()
 
-        val mensagem = findViewById<TextView>(R.id.mensagemInicial)
-        mensagem.text = "Bem vindo $nome"
-
-
-
-        val primeira_foto = findViewById<ImageView>(R.id.imageView1)
-        primeira_foto.setImageResource(R.drawable.casa)
+        // colocar toolbar
+        var toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
 
         configuraMenuLateral()
+
+        recycler = recyclerImoveis
+        recycler?.layoutManager = LinearLayoutManager(context)
+        recycler?.itemAnimator = DefaultItemAnimator()
+        recycler?.setHasFixedSize(true)
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        taskImoveis()
+    }
+
+    fun taskImoveis(){
+        imoveis = ImovelServices.getImoveis(context)
+        recycler?.adapter = ImovelAdapter(imoveis){onClickImoveis(it)}
+    }
+
+    fun onClickImoveis(imovel: Imovel){
+        Toast.makeText(context, "${imovel.endereco}", Toast.LENGTH_SHORT).show()
+
     }
 
     fun cliqueSair() {
