@@ -62,8 +62,12 @@ class TelaInicialActivity : DebugActivity(),
     }
 
     fun taskImoveis(){
-        imoveis = ImovelServices.getImoveis(context)
-        recycler?.adapter = ImovelAdapter(imoveis){onClickImoveis(it)}
+        Thread {
+            this.imoveis = ImovelServices.getImoveis(context)
+            runOnUiThread{
+                recycler?.adapter = ImovelAdapter(imoveis){onClickImoveis(it)}
+            }
+        }.start()
     }
 
     fun onClickImoveis(imovel: Imovel){

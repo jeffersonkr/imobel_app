@@ -1,19 +1,31 @@
 package br.com.imobel_app
 
 import android.content.Context
+import android.util.Log
+import br.com.fernandosousa.lmsapp.HttpHelper
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import java.net.URL
 
 object ImovelServices {
+
+    val host = "http://lucascanhaleite.pythonanywhere.com/api"
+    val TAG = "WS_AppImobel"
+
     fun getImoveis(context: Context): List<Imovel> {
-        val imoveis = mutableListOf<Imovel>()
-        for ( i in 1..10) {
-            val imovel = Imovel()
-            imovel.bairro = "bairro chik"
-            imovel.cep = "01122-001"
-            imovel.cidade = "Sao Paulo"
-            imovel.endereco = "Rua impacta, 44"
-            imovel.foto = "https://images.imoveis-sc.com.br/media/thumb-350-250/blumenau-casa-velha-606867-0-imagem_imovel_5c598f278237d1072736948000.jpeg"
-            imoveis.add(imovel)
-        }
-        return imoveis
+        val url = "$host/imovel"
+        val json = URL(url).readText()
+        Log.d(TAG, json)
+
+        return parseJson<List<Imovel>>(json)
+    }
+
+    fun saveImovel(imovel: Imovel): Response {
+        var json = HttpHelper.post("$host/imovel", imovel.toJson())
+    }
+
+    inline fun <reified T> parseJson(json: String) : T {
+        val type = object: TypeToken<T>(){}.type
+        return Gson().fromJson<T>(json, type)
     }
 }
