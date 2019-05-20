@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.adapter_imovel.view.*
 
 class ImovelAdapter (val imoveis: List<Imovel>, val onClick: (Imovel) -> Unit): RecyclerView.Adapter<ImovelAdapter.ImovelViewHolder>() {
@@ -38,6 +39,15 @@ class ImovelAdapter (val imoveis: List<Imovel>, val onClick: (Imovel) -> Unit): 
         val imovel = this.imoveis[position]
 
         holder.cardNome.text = imovel.endereco
+        Picasso.with(context).load(imovel.foto).fit().into(holder.cardImg, object: com.squareup.picasso.Callback{
+                override fun onSuccess() {
+
+                }
+
+            override fun onError() {
+
+            }
+            })
         holder.itemView.setOnClickListener{onClick(imovel)}
     }
 

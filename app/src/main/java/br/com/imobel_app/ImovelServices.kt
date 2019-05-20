@@ -11,7 +11,7 @@ object ImovelServices {
             imovel.cep = "01122-001"
             imovel.cidade = "Sao Paulo"
             imovel.endereco = "Rua impacta, 44"
-            imovel.foto = "url de foto"
+            imovel.foto = "https://images.imoveis-sc.com.br/media/thumb-350-250/blumenau-casa-velha-606867-0-imagem_imovel_5c598f278237d1072736948000.jpeg"
             imoveis.add(imovel)
         }
         return imoveis
