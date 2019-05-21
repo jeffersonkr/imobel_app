@@ -103,6 +103,16 @@ class TelaInicialActivity : DebugActivity(),
         return true
     }
 
+
+    private var REQUEST_CADASTRO = 1
+    private var REQUEST_REMOVE= 2
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == REQUEST_CADASTRO || requestCode == REQUEST_REMOVE ) {
+            // atualizar lista de disciplinas
+            taskImoveis()
+        }
+    }
+
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         // id do item clicado
         val id = item?.itemId
@@ -114,6 +124,9 @@ class TelaInicialActivity : DebugActivity(),
             Toast.makeText(context, "Botão de atualizar", Toast.LENGTH_LONG).show()
         } else if (id == R.id.action_config) {
             Toast.makeText(context, "Botão de configuracoes", Toast.LENGTH_LONG).show()
+        } else if (id == R.id.action_cadastrar_imovel) {
+            val intent = Intent(context, ImovelCadastroActivity::class.java)
+            startActivityForResult(intent, REQUEST_CADASTRO)
         }
         // botão up navigation
         else if (id == android.R.id.home) {

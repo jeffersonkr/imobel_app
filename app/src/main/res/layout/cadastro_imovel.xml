@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              tools:context=".ImovelCadastroActivity">
+
+    <EditText
+            android:id="@+id/descricaoImovel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Descrição"
+            android:inputType="textPersonName"/>
+
+    <EditText
+            android:id="@+id/enderecoImovel"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:ems="10"
+            android:hint="Endereco"
+            android:inputType="textMultiLine" />
+
+    <EditText
+            android:id="@+id/bairroImovel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Bairro"
+            android:inputType="textPersonName" />
+
+    <EditText
+            android:id="@+id/cepImovel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="CEP"
+            android:inputType="textPersonName"/>
+
+    <Button
+            android:id="@+id/criarImovel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="salvar" />
+
+</LinearLayout>

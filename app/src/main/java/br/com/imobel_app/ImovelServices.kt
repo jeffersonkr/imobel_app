@@ -2,7 +2,6 @@ package br.com.imobel_app
 
 import android.content.Context
 import android.util.Log
-import br.com.fernandosousa.lmsapp.HttpHelper
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.net.URL
@@ -22,6 +21,19 @@ object ImovelServices {
 
     fun saveImovel(imovel: Imovel): Response {
         var json = HttpHelper.post("$host/imovel", imovel.toJson())
+        return parseJson<Response>(json)
+    }
+
+    fun deleteImovel(imovel: Imovel): Response {
+        var id = imovel.id
+        var json: String = HttpHelper.delete("$host/imovel/$id")
+        return parseJson<Response>(json)
+    }
+
+    fun updateImovel(imovel: Imovel): Response {
+        var id = imovel.id
+        var json: String = HttpHelper.put("$host/imovel/$id", imovel.toJson())
+        return parseJson<Response>(json)
     }
 
     inline fun <reified T> parseJson(json: String) : T {

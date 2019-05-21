@@ -37,6 +37,14 @@ object HttpHelper {
         return getJson(request)
     }
 
+    // PUT
+    fun put(url: String, json: String): String {
+        Log.d(TAG, "HttpHelper.put: $url > $json")
+        val body = RequestBody.create(JSON, json)
+        val request = Request.Builder().url(url).put(body).build()
+        return getJson(request)
+    }
+
 
     // Lê resposta em formato JSON
     private fun getJson(request: Request?): String {
